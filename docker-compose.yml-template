@@ -1,0 +1,27 @@
+version: '3'
+services:
+  rfidd:
+    ##################################################
+    # BUILD section
+    ##################################################
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+      args:
+        BUILD_TZ: Europe/Berlin
+        PYTHON_IMAGE: python:3-alpine
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+    image: unimock/rfid-mqtt-docker:0.0.0
+    environment:
+      - DEVICE=/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A50285BI-if00-port0
+      - MQTT_NODE=hc1.mok.intra
+      - MQTT_PORT=1883
+      - MQTT_TOPIC=/rfid
+    devices:
+      - /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A50285BI-if00-port0
+
+
+
