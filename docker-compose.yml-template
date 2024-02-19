@@ -17,7 +17,7 @@ services:
     image: unimock/rfid-mqtt-docker:0.0.0
     environment:
       - DEVICE=/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A50285BI-if00-port0
-      - MQTT_NODE=hc1.mok.intra
+      - MQTT_NODE=hc1
       - MQTT_PORT=1883
       - MQTT_TOPIC=/rfid
     devices:
